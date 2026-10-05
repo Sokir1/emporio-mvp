@@ -1,0 +1,246 @@
+{
+  "archive_name": "Emporio-Web-y-App.zip",
+  "archive_sha256": "97ae40dc5d2ac42680ee19c8d3d033f177616274ef434091c15605ff0bab19d1",
+  "files": [
+    {
+      "path": "Backend/pom.xml",
+      "sha256": "09891d5c6ae9d4118e10fa61a22323fc88bbcf20bccadae4032c16570dcb76fc"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/config/Bootstrap.java",
+      "sha256": "417b14e5073c60b3dd88010fdad0964823349dae4849479ad6ee09a3079fb978"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/config/SecurityConfig.java",
+      "sha256": "e1dc793ec3c32a0e27b280574d5baaa29658b2d6406d9a17b29f3f3a1c3bb3c1"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/controller/EmporioController.java",
+      "sha256": "2185d122cb6f27458011fd484bca77d6394acba9f852bee8052522f5043b2811"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/controller/Forms.java",
+      "sha256": "1bc5fabe476db6b7a2fd9e9c3de4286d523be8db7e744bfa5b7f5930102b572f"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/controller/WebAdvice.java",
+      "sha256": "0de71cc8abf97d3afd2a63fe495f6a30d33052839694ae3fbdadeb8cdd7a7eb6"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/EmporioApplication.java",
+      "sha256": "81febf70cc1ab5cafd4d17dba72faede7bcabefdbf3413fdbde56d13dc0c018a"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/AppUser.java",
+      "sha256": "de900cf65ab9edb83d0be37221eb48051cbe3c17c11f641be791942e9787ea31"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Location.java",
+      "sha256": "6d55fff0a716f2a679165dd5498cef98b9e8efb12a54ba95971dd97e9c872615"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Lot.java",
+      "sha256": "f22c79b7717cc93f3aceceecfd01143d9cf53094abe52942fe57129a49248930"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Movement.java",
+      "sha256": "cfc3f2e7d0d624a940fb9e590f37a67c41e0c2c9ad998e65fa70018d9e16be83"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Product.java",
+      "sha256": "5df9d8b896359dbac4bae8791e455cd3eaf13b5034b8c1279e687beb92bee1e8"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Sale.java",
+      "sha256": "6b2f5c42a7ec52a47d25d3841f8c8e3552d2eced9903b5755d9d453459b033b4"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/SaleLine.java",
+      "sha256": "d872f1baa1fff8104ab44d839eacbd45652a7f50b81a32009947f6e463d3e070"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/model/Supplier.java",
+      "sha256": "2a9d25d0dd125fb3b3bb2bf703e4120c59724950f1ff73bc1fc2a0cff2f863fc"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/LocationRepository.java",
+      "sha256": "d05c9480c926fb1299565aef8b288ba788744870dbeb810308d22450c623c572"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/LotRepository.java",
+      "sha256": "66aac5c74312063493660642368550d0ab4aa8908b88a9079d6b50204362fa41"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/MovementRepository.java",
+      "sha256": "84a82b6dd0be33bd0a5184504b1a823c4d9411f3a1dbaf2c5e6225feeef4e731"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/ProductRepository.java",
+      "sha256": "693a901fc51e9f4f1524dca5b9ff276a7b799daa08782dc61f01fa2105a78f8d"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/SaleLineRepository.java",
+      "sha256": "0f6d527e04bf0615efa23c2c3a069b423f64eec33c01a70f491cd81b2a6535dc"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/SaleRepository.java",
+      "sha256": "acd39c010a0ee94d67f513e6232d4248a3ecd0c740546e6113136140393fbcd8"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/SupplierRepository.java",
+      "sha256": "123cd7f3deffa34fd10bc2fe1ced78d893999bf76e83a440fc363150706d3fdf"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/repository/UserRepository.java",
+      "sha256": "dacc2d0752fa359a76d5371c5f25a2f13d5cbe7a5c5dac887d2f7dd21af25df2"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/service/BusinessClock.java",
+      "sha256": "2b5562c6affd044881c932421ba08a73f33074c006b33d3f710fef92fef92c7e"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/service/BusinessException.java",
+      "sha256": "48bea894aa8bc2619678503cea1fb7111fa015020e4ca9c84279de3f8a65ff00"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/service/InventoryQueries.java",
+      "sha256": "da56ac51788da687fd3d5bfdce2ee3bae0489b88bc32c5a54e42d3159b742410"
+    },
+    {
+      "path": "Backend/src/main/java/cl/emporio/service/InventoryService.java",
+      "sha256": "693db3d61b5a5b1c81da63c8dbe260ffeb57c6edbb799407d575ba4b96c9df10"
+    },
+    {
+      "path": "Backend/src/main/resources/application.properties",
+      "sha256": "b38d979de8ee38d470a6b08aad24c0312e9d5ecfb92fe785bd00ae73e0c0084d"
+    },
+    {
+      "path": "Backend/src/main/resources/db/migration/V1__inventario.sql",
+      "sha256": "6b9ab4f5c52cf086b25363736afa1492f9af166b48dc0d09ee3545e12ee93437"
+    },
+    {
+      "path": "Escritorio/Compilar.ps1",
+      "sha256": "38f106be2285725d71f30f735cf35ca2204319774d7f8ca7cc4dd3ec160632a3"
+    },
+    {
+      "path": "Escritorio/dependencias/webview2/lib/net462/Microsoft.Web.WebView2.Core.dll",
+      "sha256": "d60e6e94245078cb56e44ebd5f360dc04bf18e460136be93bfc4cfca43b98505"
+    },
+    {
+      "path": "Escritorio/dependencias/webview2/lib/net462/Microsoft.Web.WebView2.WinForms.dll",
+      "sha256": "6a9e6856f23c463783c3afb0ca5d78f56324c86657162ccb16d5227b3233b32a"
+    },
+    {
+      "path": "Escritorio/dependencias/webview2/LICENSE.txt",
+      "sha256": "0af8f1b807512aae39c2ac1aa4d0cae65cabecb6fd554b8439a5162a0d6eca55"
+    },
+    {
+      "path": "Escritorio/dependencias/webview2/NOTICE.txt",
+      "sha256": "106423785c5b7eba0a8e61d1837f2132e9c828e20ad530f565d981c1df60dd90"
+    },
+    {
+      "path": "Escritorio/dependencias/webview2/runtimes/win-x64/native/WebView2Loader.dll",
+      "sha256": "3426dcc55fdfb8b5e7ac623cf33b4ccf283fbf68a0c5a65bddfdb4d749a8abee"
+    },
+    {
+      "path": "Escritorio/Emporio.cs",
+      "sha256": "1c638fb058d9a0bd7dc2328d666901f552482166731f9e74a9198c20e9a039da"
+    },
+    {
+      "path": "Escritorio/Emporio.exe.config",
+      "sha256": "79518d3e24a1241ba756b8382893d5b5534707b31e21dbc2b07e83156479cdf9"
+    },
+    {
+      "path": "Escritorio/Emporio.manifest",
+      "sha256": "35bd7c3d592f130a399210a1990940e916a2321f2c4d01c6bb386c4965e41e80"
+    },
+    {
+      "path": "Escritorio/Emporio.ps1",
+      "sha256": "00db0131db64c7df2e94c7b9980416796c2713b4eab5ba63efe91f2f5232240e"
+    },
+    {
+      "path": "Escritorio/Lanzador.cs",
+      "sha256": "c063021968af8601b84219f7589bf83a07dda1b8016ad885a9d47fb7b1ebc4fc"
+    },
+    {
+      "path": "Frontend/static/assets/app.css",
+      "sha256": "8d1060d64975aa265605df77fa2246113a8efd40dcd1acfc4a3314cb4d876e4d"
+    },
+    {
+      "path": "Frontend/static/assets/app.js",
+      "sha256": "e0fb44c1d1d973296cf8ad156c2a2b177b3085e88b46a564f61c581af1c2379c"
+    },
+    {
+      "path": "Frontend/static/assets/leaf.svg",
+      "sha256": "97833ccf4e65d2d437e112260e875c7f0272bfe4bd91eb7457a12c07b1cc0ede"
+    },
+    {
+      "path": "Frontend/templates/account.html",
+      "sha256": "65a8d3256cb2f60585d77988972d526820c8521da85565c2961c76893c3be6b8"
+    },
+    {
+      "path": "Frontend/templates/alerts.html",
+      "sha256": "e8a4799aaaa476c08609aaeb324b397ef721f7bc81fe95c16245c24949bc1f16"
+    },
+    {
+      "path": "Frontend/templates/catalog.html",
+      "sha256": "50b0cd5696f5b34b00e48bc6b0715f4911e00e8c0e9a1297fa43436185878579"
+    },
+    {
+      "path": "Frontend/templates/dashboard.html",
+      "sha256": "228ce0af7c7a2438116c424a6da07277433e69dd9fad5104fb766a0a43cb7176"
+    },
+    {
+      "path": "Frontend/templates/error.html",
+      "sha256": "2356825a65b599e5a36362c480dc2146419b477b2e482c8663f7810bebd80d13"
+    },
+    {
+      "path": "Frontend/templates/layout.html",
+      "sha256": "7d6ab3465f5f0f4e4036a5b1d5ae3d661ab551917882017febfda33e49d236a8"
+    },
+    {
+      "path": "Frontend/templates/login.html",
+      "sha256": "63cba660470555bedc5456da0d81ebaa223e08cde073fd51cbbfd36d43e2f72d"
+    },
+    {
+      "path": "Frontend/templates/movements.html",
+      "sha256": "a309bbc4fbffc96f5629aab6badf314c2514095fbfbeecd9a7995a3bc3b6d4e7"
+    },
+    {
+      "path": "Frontend/templates/product-detail.html",
+      "sha256": "723f94b3664ebc98446f1be92983133f131b77cd9425401a3dd6e3d80d2bfc76"
+    },
+    {
+      "path": "Frontend/templates/product-form.html",
+      "sha256": "c8063e7274e8e70f71604f6c905e140b7515eb1eb39c36e431c9b9d49a50195a"
+    },
+    {
+      "path": "Frontend/templates/products.html",
+      "sha256": "2ec29c8afbaf96dedeb52afae41c84fc3c0616f7c6866d118dc606edba43aaac"
+    },
+    {
+      "path": "Frontend/templates/receipt-form.html",
+      "sha256": "d7c015cd3d00a872be7f0c925cdd7ae4cd9af016345136ac4bd914b8594a410a"
+    },
+    {
+      "path": "Frontend/templates/sale-detail.html",
+      "sha256": "2bc33c5580fe4c8f700306d5eb7bd50c13017a3fbf3f056dba9304569caea988"
+    },
+    {
+      "path": "Frontend/templates/sale-form.html",
+      "sha256": "e9419c8f8a0c65fe2a787d05f73ba60402a13504388b6d77a0478d8ecd0e3970"
+    },
+    {
+      "path": "Frontend/templates/sales.html",
+      "sha256": "f60d78c0e469f56fe3f850d6a81de05ab4cd93c314dc64b191545cbcbb262369"
+    },
+    {
+      "path": "Frontend/templates/warehouse.html",
+      "sha256": "e65d51d0b017a61de2ca6df6789e725d1c01b04f861549435f97e1dab7b43c18"
+    },
+    {
+      "path": "LEEME.txt",
+      "sha256": "8fb00db62bee00a26a7609729f41b03eedebef126a4cb875d07d13eb56a0c3c4"
+    }
+  ]
+}

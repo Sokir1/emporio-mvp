@@ -1,0 +1,26 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:replace="~{layout :: page(~{::main})}"><main>
+ <div class="page-heading"><div><h1>Inicio</h1><p>Elige lo que necesitas hacer.</p></div></div>
+ <section class="quick-actions" aria-label="Tareas del negocio">
+  <a class="quick-action sell" th:href="@{/ventas/nueva}"><span>＋</span><strong>Vender</strong><small>Registrar una venta</small></a>
+  <a class="quick-action" th:href="@{/productos}"><span>▦</span><strong>Ver productos</strong><small>Consultar precios y cantidades</small></a>
+  <a class="quick-action" th:href="@{/bodega}"><span>▤</span><strong>Ver bodega</strong><small>Revisar la mercadería guardada</small></a>
+ </section>
+ <section class="metrics" aria-label="Resumen del negocio">
+  <a class="metric green" th:href="@{/ventas}"><span class="metric-label">Ventas de hoy</span><strong th:text="${format.money(dashboard.salesToday)}">$0</strong><small>Total vendido, sin ventas anuladas</small></a>
+  <a class="metric" th:href="@{/productos}"><span class="metric-label">Productos</span><strong th:text="${dashboard.productCount}">0</strong><small>Productos registrados</small></a>
+  <a class="metric amber" th:href="@{/alertas}"><span class="metric-label">Por reponer</span><strong th:text="${dashboard.lowCount}">0</strong><small>Productos que se están acabando</small></a>
+  <a class="metric violet" th:href="@{/alertas}"><span class="metric-label">Por vencer</span><strong th:text="${dashboard.upcomingCount}">0</strong><small>Mercadería que vence en 14 días</small></a>
+ </section>
+ <div class="notice danger" th:if="${dashboard.expiredCount > 0}"><strong>Hay mercadería vencida.</strong> Retírala de la venta y avisa al encargado. <a th:href="@{/alertas}">Revisar →</a></div>
+ <div class="dashboard-grid">
+  <section class="card"><div class="card-heading"><h2>Productos por reponer</h2><a th:href="@{/alertas}" class="text-link">Ver todos →</a></div>
+   <div class="empty" th:if="${#lists.isEmpty(dashboard.low)}"><span th:text="${dashboard.productCount == 0 ? '＋' : '✓'}"></span><h3 th:text="${dashboard.productCount == 0 ? 'Agrega tus productos' : 'Hay suficiente mercadería'}"></h3><p th:text="${dashboard.productCount == 0 ? 'El encargado debe registrar los productos y las cantidades disponibles para comenzar.' : 'Ningún producto está bajo la cantidad mínima.'}"></p><a sec:authorize="hasRole('ADMIN')" th:if="${dashboard.productCount == 0}" class="btn secondary" th:href="@{/productos/nuevo}">Agregar el primer producto</a></div>
+   <a th:each="r : ${dashboard.low}" th:href="@{/productos/{id}(id=${r.product.id})}" class="stock-item"><span class="product-monogram" th:text="${#strings.substring(r.product.name,0,1)}"></span><span class="stock-item-name"><strong th:text="${r.product.name}"></strong><small th:text="${'Mínimo: ' + format.qty(r.product.minimumStock) + ' ' + r.product.unit}"></small></span><span class="stock-item-qty"><strong th:text="${format.qty(r.available) + ' ' + r.product.unit}"></strong><span class="badge" th:classappend="${r.status == 'AGOTADO'} ? 'red' : 'yellow'" th:text="${r.status == 'AGOTADO' ? 'Agotado' : 'Queda poco'}"></span></span></a>
+  </section>
+  <section class="card"><div class="card-heading"><h2>Revisar vencimientos</h2><a th:href="@{/alertas}" class="text-link">Ver todos →</a></div>
+   <div class="empty" th:if="${#lists.isEmpty(dashboard.expiring)}"><span>✓</span><h3>Sin vencimientos próximos</h3><p>No hay mercadería que venza en los próximos 14 días.</p></div>
+   <a th:each="l : ${dashboard.expiring}" th:href="@{/productos/{id}(id=${l.product.id})}" class="stock-item"><span class="stock-item-name"><strong th:text="${l.product.name}"></strong><small th:text="${l.location.name}"></small></span><span class="stock-item-qty"><strong th:text="${format.date(l.expiresOn)}"></strong><span class="badge" th:classappend="${l.expired} ? 'red' : 'yellow'" th:text="${l.expired ? 'Vencido · No vender' : 'Vence pronto'}"></span></span></a>
+  </section>
+ </div>
+ <div class="actions" sec:authorize="hasRole('ADMIN')"><a class="btn secondary" th:href="@{/entradas/nueva}">Recibir mercadería</a><a class="text-link" th:href="@{/movimientos}">Ver historial de la mercadería →</a></div>
+</main></html>

@@ -1,0 +1,5 @@
+# Preservar los bytes originales de las fuentes y bibliotecas del ZIP.
+/Backend/** -text
+/Frontend/** -text
+/Escritorio/** -text
+/LEEME.txt -text

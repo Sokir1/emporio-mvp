@@ -1,0 +1,12 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::main})}"><main>
+ <div class="page-heading"><div><a class="text-link" th:href="@{/productos}">← Volver a productos</a><h1 th:text="${editing ? 'Editar producto' : 'Nuevo producto'}"></h1><p>Elige cómo medirlo y cuándo avisarte que necesitas reponer.</p></div></div>
+ <form class="card form-card" th:action="${editing ? '/productos/' + id + '/editar' : '/productos/nuevo'}" th:object="${form}" method="post"><div class="notice danger" role="alert" th:if="${#fields.hasAnyErrors()}"><p th:each="error : ${#fields.allErrors()}" th:text="${error}"></p></div><div class="form-grid">
+ <div><label for="sku">Código del producto <span>*</span></label><input id="sku" th:field="*{sku}" required maxlength="40" pattern="[A-Za-z0-9_-]+" placeholder="Ej. FS-001"><small>Un código único y fácil de reconocer.</small></div>
+ <div><label for="name">Nombre <span>*</span></label><input id="name" th:field="*{name}" required maxlength="120" placeholder="Ej. Almendras naturales"></div>
+ <div><label for="category">Categoría <span>*</span></label><select id="category" th:field="*{category}"><option th:each="c : ${categories}" th:value="${c}" th:text="${c}"></option></select></div>
+ <div><label for="unit">Unidad de medida <span>*</span></label><select id="unit" th:field="*{unit}"><option value="kg">Kilogramos (kg)</option><option value="unidad">Unidades</option></select><small>Para ventas a granel usa kg: 250 g = 0,250 kg.</small></div>
+ <div><label for="minimumStock">Stock mínimo <span>*</span></label><input id="minimumStock" th:field="*{minimumStock}" type="number" min="0" step="0.001" max="999999999.999" required><small>Al llegar a este nivel aparecerá una alerta.</small></div>
+ <div><label for="salePrice">Precio por kg o unidad (CLP) <span>*</span></label><input id="salePrice" th:field="*{salePrice}" type="number" min="0" step="1" max="999999999999" required></div>
+ <div class="span-2"><label for="description">Descripción</label><textarea id="description" th:field="*{description}" maxlength="500" rows="3" placeholder="Presentación u otros detalles útiles"></textarea></div>
+ </div><div class="form-actions"><a class="btn secondary" th:href="@{/productos}">Cancelar</a><button class="btn primary" type="submit">Guardar producto</button></div></form>
+</main></html>

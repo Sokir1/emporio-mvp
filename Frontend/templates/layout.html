@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:fragment="page(content)">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title th:text="${title != null ? title + ' · Emporio' : 'Emporio'}">Emporio</title>
+  <link rel="icon" th:href="@{/assets/leaf.svg}" type="image/svg+xml">
+  <link rel="stylesheet" th:href="@{/assets/app.css}">
+  <script defer th:src="@{/assets/app.js}"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" th:href="@{/}"><img th:src="@{/assets/leaf.svg}" alt="" width="38" height="38"><span>emporio<span class="brand-sub">FRUTOS SECOS & QUESOS</span></span></a>
+    <div class="store-label"><span class="status-dot"></span> Comercializadora Ángel <small>Ovalle, Chile</small></div>
+    <nav aria-label="Navegación principal">
+      <a th:href="@{/ventas/nueva}" class="sell-now" th:classappend="${currentPath == '/ventas/nueva'} ? 'active'"><span class="nav-icon">＋</span> Vender</a>
+      <a th:href="@{/}" th:classappend="${currentPath == '/'} ? 'active'"><span class="nav-icon">◫</span> Inicio</a>
+      <a th:href="@{/productos}" th:classappend="${#strings.startsWith(currentPath,'/productos')} ? 'active'"><span class="nav-icon">▦</span> Productos</a>
+      <a th:href="@{/bodega}" th:classappend="${#strings.startsWith(currentPath,'/bodega')} ? 'active'"><span class="nav-icon">▤</span> Bodega</a>
+      <a th:href="@{/ventas}" th:classappend="${#strings.startsWith(currentPath,'/ventas') and currentPath != '/ventas/nueva'} ? 'active'"><span class="nav-icon">↗</span> Ventas realizadas</a>
+    </nav>
+    <details class="nav-options">
+    <summary>Más opciones</summary>
+    <nav aria-label="Más opciones">
+      <a sec:authorize="hasRole('ADMIN')" th:href="@{/entradas/nueva}" th:classappend="${#strings.startsWith(currentPath,'/entradas')} ? 'active'">Recibir mercadería</a>
+      <a th:href="@{/alertas}" th:classappend="${currentPath == '/alertas'} ? 'active'">Productos por reponer o vencer</a>
+      <a th:href="@{/movimientos}" th:classappend="${currentPath == '/movimientos'} ? 'active'">Historial de la mercadería</a>
+      <a th:href="@{/mi-cuenta}" th:classappend="${currentPath == '/mi-cuenta'} ? 'active'">Mi cuenta</a>
+    </nav>
+    </details>
+    <details sec:authorize="hasRole('ADMIN')" class="nav-options">
+    <summary>Opciones del encargado</summary>
+    <nav aria-label="Administración">
+      <a th:href="@{/ubicaciones}" th:classappend="${#strings.startsWith(currentPath,'/ubicaciones')} ? 'active'">Lugares de almacenamiento</a>
+      <a th:href="@{/proveedores}" th:classappend="${#strings.startsWith(currentPath,'/proveedores')} ? 'active'">Proveedores</a>
+      <a th:href="@{/usuarios}" th:classappend="${currentPath == '/usuarios'} ? 'active'">Personal</a>
+    </nav>
+    </details>
+    <div class="sidebar-bottom"><div class="avatar" th:text="${#strings.isEmpty(userDisplay) ? '?' : #strings.substring(userDisplay,0,1)}">A</div><div><strong th:text="${userDisplay}">Administración</strong><small sec:authorize="hasRole('ADMIN')">Administrador</small><small sec:authorize="hasRole('VENTAS')">Ventas</small></div><form th:action="@{/logout}" method="post"><button class="logout" aria-label="Cerrar sesión" title="Cerrar sesión">↪</button></form></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span><span class="muted">Mi negocio</span><span class="separator">/</span><strong th:text="${title ?: 'Emporio'}">Resumen</strong></span><span class="header-date" th:text="${format.date(today)}">Fecha</span></header>
+    <div class="content-wrap">
+      <div class="notice success" role="status" th:if="${success}" th:text="${success}"></div>
+      <div th:replace="${content}"></div>
+      <footer class="footer"><span>Emporio · Comercializadora Ángel</span><span>Ventas, inventario y bodega</span></footer>
+    </div>
+  </div>
+</body>
+</html>

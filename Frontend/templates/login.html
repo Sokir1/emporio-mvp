@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ingresar · Emporio</title><link rel="icon" th:href="@{/assets/leaf.svg}"><link rel="stylesheet" th:href="@{/assets/app.css}"></head>
+<body class="login-page">
+ <section class="login-story"><a class="brand" th:href="@{/}"><img th:src="@{/assets/leaf.svg}" alt="" width="48" height="48"><span>emporio<span class="brand-sub">FRUTOS SECOS & QUESOS</span></span></a><div><span class="eyebrow light">COMERCIALIZADORA ÁNGEL · OVALLE</span><h1>Tu emporio,<br>en orden.</h1><p>Menos tiempo buscando.<br>Más tiempo para tu negocio.</p><div class="login-tags"><span>Stock al día</span><span>Todo en su lugar</span><span>Vencimientos a la vista</span></div></div><small>Una herramienta sencilla para quienes dan vida al negocio.</small></section>
+ <main class="login-panel"><div class="login-box"><span class="eyebrow">COMERCIALIZADORA ÁNGEL</span><h2>Ingresar</h2><p class="muted">Escribe tu usuario y contraseña para comenzar.</p>
+ <div class="notice danger" th:if="${param.error}" role="alert">El usuario o la contraseña no son correctos.</div><div class="notice success" th:if="${param.logout}">Cerraste tu sesión.</div><div class="notice success" th:if="${param.passwordChanged}">Contraseña actualizada. Ingresa con tu nueva contraseña.</div>
+ <form th:action="@{/login}" method="post"><label for="username">Usuario</label><input id="username" name="username" autocomplete="username" required maxlength="80" autofocus placeholder="Tu nombre de usuario"><label for="password">Contraseña</label><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Tu contraseña"><button class="btn primary full" type="submit">Ingresar al emporio <span>→</span></button></form>
+ <p class="login-help">¿Necesitas acceso? Pídeselo a quien administra el negocio.</p></div></main>
+</body></html>

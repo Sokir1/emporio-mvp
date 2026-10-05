@@ -1,0 +1,12 @@
+﻿CÓDIGO DEL PROGRAMA
+
+Backend: Java, controladores, modelos, servicios y base de datos.
+Frontend: pantallas, estilos y comportamiento de la página web.
+Escritorio: aplicación de Windows y abridores.
+
+La estructura MVC separa el manejo de los datos, las operaciones y las pantallas.
+El proyecto Backend incluye los archivos de Frontend al compilar.
+
+Para compilar el backend, ejecuta mvn package dentro de Backend (Java 17 o superior y Maven).
+Para compilar los abridores y la aplicación, ejecuta Compilar.ps1 dentro de Escritorio en Windows.
+Escritorio incluye sus bibliotecas necesarias.

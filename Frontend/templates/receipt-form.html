@@ -1,0 +1,16 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::main})}"><main>
+ <div class="page-heading"><div><span class="eyebrow">MERCADERÍA QUE LLEGA</span><h1>Registrar entrada</h1><p>Guarda la cantidad, el lote y su lugar para encontrarlo después.</p></div></div>
+ <div class="notice info" th:if="${#lists.isEmpty(products) or #lists.isEmpty(locations)}">Primero registra al menos un <a th:href="@{/productos/nuevo}">producto</a> y una <a th:href="@{/ubicaciones}">ubicación</a>.</div>
+ <form class="card form-card" th:action="@{/entradas/nueva}" th:object="${form}" method="post"><div class="notice danger" th:if="${#fields.hasAnyErrors()}" role="alert"><p th:each="e : ${#fields.allErrors()}" th:text="${e}"></p></div><div class="form-grid">
+ <div><label for="productId">Producto <span>*</span></label><select id="productId" th:field="*{productId}" required><option value="">Seleccionar producto</option><option th:each="p : ${products}" th:value="${p.id}" th:text="${p.name + ' · ' + p.unit}" th:attr="data-unit=${p.unit}"></option></select></div>
+ <div><label for="locationId">Ubicación de destino <span>*</span></label><select id="locationId" th:field="*{locationId}" required><option value="">¿Dónde quedará?</option><option th:each="l : ${locations}" th:value="${l.id}" th:text="${l.name}"></option></select></div>
+ <div><label for="supplierId">Proveedor</label><select id="supplierId" th:field="*{supplierId}"><option value="">Sin proveedor registrado</option><option th:each="s : ${suppliers}" th:value="${s.id}" th:text="${s.name}"></option></select></div>
+ <div><label for="code">Código de lote <span>*</span></label><input id="code" th:field="*{code}" required maxlength="60" placeholder="Código del envase o referencia propia"></div>
+ <div><label for="quantity">Cantidad (en kg o unidades) <span>*</span></label><input id="quantity" th:field="*{quantity}" type="number" min="0.001" step="0.001" max="999999999.999" required><small>250 g = 0,250 kg. Las unidades deben ser enteras.</small></div>
+ <div><label for="unitCost">Costo por kg o unidad (CLP) <span>*</span></label><input id="unitCost" th:field="*{unitCost}" type="number" min="0" max="999999999999" step="1" required></div>
+ <div><label for="receivedOn">Fecha de recepción <span>*</span></label><input id="receivedOn" th:field="*{receivedOn}" type="date" th:max="${today}" required></div>
+ <div><label for="expiresOn">Fecha de vencimiento</label><input id="expiresOn" th:field="*{expiresOn}" type="date" th:min="${today}"><small>Déjala vacía únicamente si el producto no tiene vencimiento.</small></div>
+ <div><label for="quality">Estado de calidad <span>*</span></label><select id="quality" th:field="*{quality}"><option value="APTO">Apto para venta</option><option value="RETENIDO">Retenido · No vender</option></select></div>
+ <div><label for="reason">Referencia de la recepción <span>*</span></label><input id="reason" th:field="*{reason}" required maxlength="250" placeholder="Ej. Entrega del proveedor, guía 123"></div>
+ </div><div class="form-actions"><a class="btn secondary" th:href="@{/bodega}">Cancelar</a><button class="btn primary" type="submit">Registrar entrada</button></div></form>
+</main></html>

@@ -1,0 +1,51 @@
+name: Build and verification
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - run: python3 scripts/check-source-integrity.py
+      - run: mvn -B -ntp -f Backend/pom.xml package
+      - run: mvn -B -ntp -f verification/pom.xml test
+  mariadb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Start isolated MariaDB
+        run: |
+          test_password=$(openssl rand -hex 24)
+          echo "::add-mask::$test_password"
+          echo "TEST_DB_PASSWORD=$test_password" >> "$GITHUB_ENV"
+          docker run -d --name emporio-ci -p 127.0.0.1:3307:3306 \
+            -e MARIADB_RANDOM_ROOT_PASSWORD=yes -e MARIADB_DATABASE=emporio_test \
+            -e MARIADB_USER=emporio_test -e MARIADB_PASSWORD="$test_password" mariadb:11.4.5
+          for attempt in $(seq 1 60); do
+            if docker exec -e MYSQL_PWD="$test_password" emporio-ci mariadb \
+              --user=emporio_test --execute='SELECT 1' emporio_test >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'MariaDB did not become ready.'
+          exit 1
+      - name: Verify against MariaDB
+        env:
+          TEST_DB_URL: jdbc:mariadb://127.0.0.1:3307/emporio_test
+          TEST_DB_USER: emporio_test
+        run: mvn -B -ntp -f verification/pom.xml test -Dtest.profile=maria-test
+      - name: Remove isolated database
+        if: always()
+        run: docker rm -f emporio-ci
